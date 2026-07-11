@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.log
+reports/
+tests/
+
+.DS_Store
+**/.DS_Store
+
+codex/
+AGENTS.md
