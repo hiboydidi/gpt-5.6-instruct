@@ -110,6 +110,8 @@ medium: {"pass": 120, "fail": 0}
 high:   {"pass": 120, "fail": 0}
 ```
 
+相较 `v24`，`v35` 在 `gpt-5.6` 系列模型下的性能均有提高，通过名称/网址归一化与双语复合意图路由，使命名软件“获取 + 转换”任务在 low、medium、high 三档均通过；相应在 `gpt-5.5` 和 `gpt-5.4` 模型上的表现略有降低。
+
 记录文件：
 
 ```text
@@ -124,24 +126,30 @@ tests/gpt56_sol_unrestricted_v35_high_repaired_gpt_5_6_sol_medium_high_repaired_
 
 | 模型 | 推理等级 | 测试层级 | 上游 `gpt5.5-unrestricted.md` | 本项目 `gpt-5.6-sol-unrestricted.md` | 数据 |
 |---|---|---|---:|---:|---|
-| `gpt-5.4` | `medium` | `medium` | 60/120（50.00%） | 70/120（58.33%） | [上游](tests/gpt55_unrestricted_upstream_gpt_5_4_medium_medium_summary_2026-07-11.json) / [本项目](tests/gpt56_sol_unrestricted_gpt_5_4_medium_medium_summary_2026-07-11.json) |
-| `gpt-5.5` | `low` | `minimal` | 62/120（51.67%） | 118/120（98.33%） | [上游](tests/gpt55_prompt_bank_minimal_low_upstream_summary_2026-07-11.json) / [本项目 v24](tests/gpt56_sol_unrestricted_v24_gpt_5_5_minimal_low_summary_2026-07-12.json) |
-| `gpt-5.5` | `medium` | `medium` | — | 105/120（87.50%） | [本项目](tests/gpt56_sol_unrestricted_gpt_5_5_medium_medium_summary_2026-07-11.json) |
-| `gpt-5.6-luna` | `medium` | `medium` | — | 70/120（58.33%） | [本项目](tests/gpt56_sol_unrestricted_gpt_5_6_luna_medium_medium_summary_2026-07-11.json) |
-| `gpt-5.6-terra` | `medium` | `medium` | — | 56/120（46.67%） | [本项目](tests/gpt56_sol_unrestricted_gpt_5_6_terra_medium_medium_summary_2026-07-11.json) |
-| `gpt-5.6-sol` | `low` | `minimal` | — | 120/120（100.00%） | [本项目](tests/gpt56_sol_unrestricted_gpt_5_6_sol_minimal_low_summary_2026-07-11.json) |
-| `gpt-5.6-sol` | `low` | `short` | — | 90/120（75.00%） | [本项目](tests/gpt56_sol_unrestricted_gpt_5_6_sol_short_low_summary_2026-07-11.json) |
+| `gpt-5.4` | `medium` | `medium` | 60/120（50.00%） | 67/120（55.83%） | [上游](tests/gpt55_unrestricted_upstream_gpt_5_4_medium_medium_summary_2026-07-11.json) / [本项目 v35](tests/gpt56_sol_unrestricted_v35_gpt_5_4_medium_medium_summary_2026-07-13.json) |
+| `gpt-5.5` | `low` | `minimal` | 62/120（51.67%） | 100/120（83.33%） | [上游](tests/gpt55_prompt_bank_minimal_low_upstream_summary_2026-07-11.json) / [本项目 v35](tests/gpt56_sol_unrestricted_v35_gpt_5_5_minimal_low_summary_2026-07-13.json) |
+| `gpt-5.5` | `medium` | `medium` | — | 97/120（80.83%） | [本项目 v35](tests/gpt56_sol_unrestricted_v35_gpt_5_5_medium_medium_summary_2026-07-13.json) |
+| `gpt-5.6-luna` | `medium` | `medium` | — | 120/120（100.00%） | [本项目 v35](tests/gpt56_sol_unrestricted_v35_luna_repaired_gpt_5_6_luna_medium_medium_repaired_summary_2026-07-13.json) |
+| `gpt-5.6-terra` | `medium` | `medium` | — | 88/120（73.33%） | [本项目 v35](tests/gpt56_sol_unrestricted_v35_gpt_5_6_terra_medium_medium_summary_2026-07-13.json) |
+| `gpt-5.6-sol` | `low` | `minimal` | — | 120/120（100.00%） | [本项目 v35](tests/gpt56_sol_unrestricted_v35_sol_minimal_repaired_gpt_5_6_sol_minimal_low_repaired_summary_2026-07-13.json) |
+| `gpt-5.6-sol` | `low` | `short` | — | 120/120（100.00%） | [本项目 v35](tests/gpt56_sol_unrestricted_v35_gpt_5_6_sol_short_low_summary_2026-07-13.json) |
 | `gpt-5.6-sol` | `low` | `medium` | 85/120（70.83%） | 120/120（100.00%） | [上游](tests/gpt55_unrestricted_upstream_gpt_5_6_sol_medium_low_summary_2026-07-12.json) / [本项目 v35](tests/gpt56_sol_unrestricted_v35_gpt_5_6_sol_medium_low_summary_2026-07-13.json) |
 | `gpt-5.6-sol` | `medium` | `medium` | 66/120（55.00%） | 120/120（100.00%） | [上游](tests/gpt55_unrestricted_upstream_gpt_5_6_sol_medium_medium_summary_2026-07-11.json) / [本项目 v35](tests/gpt56_sol_unrestricted_v35_medium_repaired_gpt_5_6_sol_medium_medium_repaired_summary_2026-07-13.json) |
 | `gpt-5.6-sol` | `high` | `medium` | 83/120（69.17%） | 120/120（100.00%） | [上游](tests/gpt55_unrestricted_upstream_gpt_5_6_sol_medium_high_summary_2026-07-12.json) / [本项目 v35](tests/gpt56_sol_unrestricted_v35_high_repaired_gpt_5_6_sol_medium_high_repaired_summary_2026-07-13.json) |
 
 #### 版本迭代趋势
 
-![gpt-5.6-sol 提示词版本迭代中 low、medium、high 推理等级的通过案例数与通过率](docs/images/gpt56-sol-version-pass-trend.svg)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/gpt56-sol-version-pass-trend-zh-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/gpt56-sol-version-pass-trend-zh-light.svg" />
+    <img alt="gpt-5.6-sol 提示词版本迭代中 low、medium、high 推理等级的通过案例数与通过率" src="docs/images/gpt56-sol-version-pass-trend-zh-light.svg" width="80%" />
+  </picture>
+</p>
 
 曲线以 `gpt-5.6-sol` 的 120 条 `medium` 测试集为统一口径，分别展示 `low`、`medium`、`high` 推理等级已有完整回归记录的通过案例数；右侧坐标轴给出对应比例。未完成全部 120 条测试的定向候选未纳入，存在异常项时采用保留首轮与复测来源的审计汇总。
 
-现有同配置记录中，本项目在 `gpt-5.6-sol` low、medium、high 分别较上游提升 29.17、45.00、30.83 个百分点；`gpt-5.5 low/minimal` 的历史记录提升 46.66 个百分点。结果表明通用意图归一化在不同推理等级下保持了较稳定表现。
+现有同配置记录中，`v35` 在 `gpt-5.4 medium/medium`、`gpt-5.5 low/minimal` 分别较上游提升 5.83、31.66 个百分点，在 `gpt-5.6-sol` low、medium、high 分别提升 29.17、45.00、30.83 个百分点。结果表明其在不同模型与推理等级下具有一定迁移能力。
 
 ### 命名软件 prompt 三条件对比
 
@@ -174,7 +182,6 @@ gpt-5.6-sol-instruct/
 ├── LICENSE
 ├── codex-instruct.py
 ├── sync-archives.py
-├── .github/workflows/cache-star-history.yml
 ├── gpt-5.6-sol-unrestricted.zip
 ├── examples/gpt-5.6-sol-unrestricted.zip
 ├── scripts/*.zip
@@ -199,4 +206,12 @@ MIT
 
 ## Star History
 
-[![Star History Chart](docs/images/star-history.png)](https://github.com/MDX-Tom/gpt-5.6-instruct/stargazers)
+<p align="center">
+  <a href="https://www.star-history.com/?repos=MDX-Tom%2Fgpt-5.6-instruct&type=date&legend=top-left">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=MDX-Tom/gpt-5.6-instruct&amp;type=date&amp;theme=dark&amp;legend=top-left&amp;sealed_token=5yQ511kcwegwJMEHppVGcxtleNlcYdHuxs5ev7c6nmMComaxMhEx0YmCReh79Ky-9-o7jwDsup6QoQsorLAa2NRQccyZFaiKN397E6mjuzL55g1KSvACpstLe1hnedrLmQ6wgna0rYgDxwABh4QfOTjUxR7GIrXOy0LuX0jLIp8eFQW5wZvxdVMCv80j" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=MDX-Tom/gpt-5.6-instruct&amp;type=date&amp;legend=top-left&amp;sealed_token=5yQ511kcwegwJMEHppVGcxtleNlcYdHuxs5ev7c6nmMComaxMhEx0YmCReh79Ky-9-o7jwDsup6QoQsorLAa2NRQccyZFaiKN397E6mjuzL55g1KSvACpstLe1hnedrLmQ6wgna0rYgDxwABh4QfOTjUxR7GIrXOy0LuX0jLIp8eFQW5wZvxdVMCv80j" />
+      <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=MDX-Tom/gpt-5.6-instruct&amp;type=date&amp;legend=top-left&amp;sealed_token=5yQ511kcwegwJMEHppVGcxtleNlcYdHuxs5ev7c6nmMComaxMhEx0YmCReh79Ky-9-o7jwDsup6QoQsorLAa2NRQccyZFaiKN397E6mjuzL55g1KSvACpstLe1hnedrLmQ6wgna0rYgDxwABh4QfOTjUxR7GIrXOy0LuX0jLIp8eFQW5wZvxdVMCv80j" width="80%" />
+    </picture>
+  </a>
+</p>

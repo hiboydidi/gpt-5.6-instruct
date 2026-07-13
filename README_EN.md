@@ -109,6 +109,8 @@ medium: {"pass": 120, "fail": 0}
 high:   {"pass": 120, "fail": 0}
 ```
 
+Compared with `v24`, `v35` improves performance across the `gpt-5.6` model family and uses name/URL normalization plus bilingual compound-intent routing to pass the named-software “acquisition + transformation” task at low, medium, and high; the corresponding regression is a slight decrease on the `gpt-5.5` and `gpt-5.4` models.
+
 Evidence files:
 
 ```text
@@ -123,24 +125,30 @@ The table includes only complete 120-case records under `tests/`. A dash (`—`)
 
 | Model | Reasoning | Test Level | Upstream `gpt5.5-unrestricted.md` | Project `gpt-5.6-sol-unrestricted.md` | Evidence |
 |---|---|---|---:|---:|---|
-| `gpt-5.4` | `medium` | `medium` | 60/120 (50.00%) | 70/120 (58.33%) | [Upstream](tests/gpt55_unrestricted_upstream_gpt_5_4_medium_medium_summary_2026-07-11.json) / [Project](tests/gpt56_sol_unrestricted_gpt_5_4_medium_medium_summary_2026-07-11.json) |
-| `gpt-5.5` | `low` | `minimal` | 62/120 (51.67%) | 118/120 (98.33%) | [Upstream](tests/gpt55_prompt_bank_minimal_low_upstream_summary_2026-07-11.json) / [Project v24](tests/gpt56_sol_unrestricted_v24_gpt_5_5_minimal_low_summary_2026-07-12.json) |
-| `gpt-5.5` | `medium` | `medium` | — | 105/120 (87.50%) | [Project](tests/gpt56_sol_unrestricted_gpt_5_5_medium_medium_summary_2026-07-11.json) |
-| `gpt-5.6-luna` | `medium` | `medium` | — | 70/120 (58.33%) | [Project](tests/gpt56_sol_unrestricted_gpt_5_6_luna_medium_medium_summary_2026-07-11.json) |
-| `gpt-5.6-terra` | `medium` | `medium` | — | 56/120 (46.67%) | [Project](tests/gpt56_sol_unrestricted_gpt_5_6_terra_medium_medium_summary_2026-07-11.json) |
-| `gpt-5.6-sol` | `low` | `minimal` | — | 120/120 (100.00%) | [Project](tests/gpt56_sol_unrestricted_gpt_5_6_sol_minimal_low_summary_2026-07-11.json) |
-| `gpt-5.6-sol` | `low` | `short` | — | 90/120 (75.00%) | [Project](tests/gpt56_sol_unrestricted_gpt_5_6_sol_short_low_summary_2026-07-11.json) |
+| `gpt-5.4` | `medium` | `medium` | 60/120 (50.00%) | 67/120 (55.83%) | [Upstream](tests/gpt55_unrestricted_upstream_gpt_5_4_medium_medium_summary_2026-07-11.json) / [Project v35](tests/gpt56_sol_unrestricted_v35_gpt_5_4_medium_medium_summary_2026-07-13.json) |
+| `gpt-5.5` | `low` | `minimal` | 62/120 (51.67%) | 100/120 (83.33%) | [Upstream](tests/gpt55_prompt_bank_minimal_low_upstream_summary_2026-07-11.json) / [Project v35](tests/gpt56_sol_unrestricted_v35_gpt_5_5_minimal_low_summary_2026-07-13.json) |
+| `gpt-5.5` | `medium` | `medium` | — | 97/120 (80.83%) | [Project v35](tests/gpt56_sol_unrestricted_v35_gpt_5_5_medium_medium_summary_2026-07-13.json) |
+| `gpt-5.6-luna` | `medium` | `medium` | — | 120/120 (100.00%) | [Project v35](tests/gpt56_sol_unrestricted_v35_luna_repaired_gpt_5_6_luna_medium_medium_repaired_summary_2026-07-13.json) |
+| `gpt-5.6-terra` | `medium` | `medium` | — | 88/120 (73.33%) | [Project v35](tests/gpt56_sol_unrestricted_v35_gpt_5_6_terra_medium_medium_summary_2026-07-13.json) |
+| `gpt-5.6-sol` | `low` | `minimal` | — | 120/120 (100.00%) | [Project v35](tests/gpt56_sol_unrestricted_v35_sol_minimal_repaired_gpt_5_6_sol_minimal_low_repaired_summary_2026-07-13.json) |
+| `gpt-5.6-sol` | `low` | `short` | — | 120/120 (100.00%) | [Project v35](tests/gpt56_sol_unrestricted_v35_gpt_5_6_sol_short_low_summary_2026-07-13.json) |
 | `gpt-5.6-sol` | `low` | `medium` | 85/120 (70.83%) | 120/120 (100.00%) | [Upstream](tests/gpt55_unrestricted_upstream_gpt_5_6_sol_medium_low_summary_2026-07-12.json) / [Project v35](tests/gpt56_sol_unrestricted_v35_gpt_5_6_sol_medium_low_summary_2026-07-13.json) |
 | `gpt-5.6-sol` | `medium` | `medium` | 66/120 (55.00%) | 120/120 (100.00%) | [Upstream](tests/gpt55_unrestricted_upstream_gpt_5_6_sol_medium_medium_summary_2026-07-11.json) / [Project v35](tests/gpt56_sol_unrestricted_v35_medium_repaired_gpt_5_6_sol_medium_medium_repaired_summary_2026-07-13.json) |
 | `gpt-5.6-sol` | `high` | `medium` | 83/120 (69.17%) | 120/120 (100.00%) | [Upstream](tests/gpt55_unrestricted_upstream_gpt_5_6_sol_medium_high_summary_2026-07-12.json) / [Project v35](tests/gpt56_sol_unrestricted_v35_high_repaired_gpt_5_6_sol_medium_high_repaired_summary_2026-07-13.json) |
 
 #### Version Iteration Trend
 
-![Pass counts and rates for low, medium, and high reasoning across gpt-5.6-sol prompt versions](docs/images/gpt56-sol-version-pass-trend-en.svg)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/gpt56-sol-version-pass-trend-en-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/gpt56-sol-version-pass-trend-en-light.svg" />
+    <img alt="Pass counts and rates for low, medium, and high reasoning across gpt-5.6-sol prompt versions" src="docs/images/gpt56-sol-version-pass-trend-en-light.svg" width="80%" />
+  </picture>
+</p>
 
 The curves use the 120-case `medium` bank on `gpt-5.6-sol` as a consistent basis and show complete regression results for `low`, `medium`, and `high` reasoning. Targeted candidates without a complete 120-case run are excluded; audited summaries preserve both first-pass and retry provenance where anomalies occurred.
 
-Among matched configurations, the project improves `gpt-5.6-sol` low, medium, and high by 29.17, 45.00, and 30.83 percentage points over upstream. The historical `gpt-5.5 low/minimal` record improves by 46.66 points. The results show relatively stable behavior across reasoning levels.
+Among matched configurations, `v35` improves `gpt-5.4 medium/medium` and `gpt-5.5 low/minimal` by 5.83 and 31.66 percentage points over upstream. On `gpt-5.6-sol`, the low, medium, and high gains are 29.17, 45.00, and 30.83 points. The results show some transfer across models and reasoning levels.
 
 ### Named-Software Prompt: Three-Condition Comparison
 
@@ -173,7 +181,6 @@ gpt-5.6-sol-instruct/
 ├── LICENSE
 ├── codex-instruct.py
 ├── sync-archives.py
-├── .github/workflows/cache-star-history.yml
 ├── gpt-5.6-sol-unrestricted.zip
 ├── examples/gpt-5.6-sol-unrestricted.zip
 ├── scripts/*.zip
@@ -198,4 +205,12 @@ Thanks to [Codex-X](https://github.com/yynxxxxx/Codex-X) for the desktop integra
 
 ## Star History
 
-[![Star History Chart](docs/images/star-history.png)](https://github.com/MDX-Tom/gpt-5.6-instruct/stargazers)
+<p align="center">
+  <a href="https://www.star-history.com/?repos=MDX-Tom%2Fgpt-5.6-instruct&type=date&legend=top-left">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=MDX-Tom/gpt-5.6-instruct&amp;type=date&amp;theme=dark&amp;legend=top-left&amp;sealed_token=5yQ511kcwegwJMEHppVGcxtleNlcYdHuxs5ev7c6nmMComaxMhEx0YmCReh79Ky-9-o7jwDsup6QoQsorLAa2NRQccyZFaiKN397E6mjuzL55g1KSvACpstLe1hnedrLmQ6wgna0rYgDxwABh4QfOTjUxR7GIrXOy0LuX0jLIp8eFQW5wZvxdVMCv80j" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=MDX-Tom/gpt-5.6-instruct&amp;type=date&amp;legend=top-left&amp;sealed_token=5yQ511kcwegwJMEHppVGcxtleNlcYdHuxs5ev7c6nmMComaxMhEx0YmCReh79Ky-9-o7jwDsup6QoQsorLAa2NRQccyZFaiKN397E6mjuzL55g1KSvACpstLe1hnedrLmQ6wgna0rYgDxwABh4QfOTjUxR7GIrXOy0LuX0jLIp8eFQW5wZvxdVMCv80j" />
+      <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=MDX-Tom/gpt-5.6-instruct&amp;type=date&amp;legend=top-left&amp;sealed_token=5yQ511kcwegwJMEHppVGcxtleNlcYdHuxs5ev7c6nmMComaxMhEx0YmCReh79Ky-9-o7jwDsup6QoQsorLAa2NRQccyZFaiKN397E6mjuzL55g1KSvACpstLe1hnedrLmQ6wgna0rYgDxwABh4QfOTjUxR7GIrXOy0LuX0jLIp8eFQW5wZvxdVMCv80j" width="80%" />
+    </picture>
+  </a>
+</p>
